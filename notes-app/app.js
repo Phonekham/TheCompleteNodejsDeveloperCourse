@@ -1,2 +1,25 @@
-const fs = require("fs");
-fs.writeFileSync("note.txt", "this file was created by Node.js");
+const yargs = require("yargs");
+
+// create add command
+yargs.command({
+  command: "add",
+  describe: "add a new note",
+  builder: {
+    title: {
+      describe: "Note title",
+      demandOption: true,
+      type: "string"
+    },
+    body: {
+      describe: "note body",
+      demandOption: true,
+      type: "string"
+    }
+  },
+  handler: function(argv) {
+    console.log("title: ", argv.title);
+    console.log("body: ", argv.body);
+  }
+});
+
+console.log(yargs.argv);
