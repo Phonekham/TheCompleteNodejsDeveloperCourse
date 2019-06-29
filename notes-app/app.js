@@ -38,4 +38,13 @@ yargs.command({
   }
 });
 
+// Create list command
+yargs.command({
+  command: "list",
+  describe: "list your  note",
+  handler() {
+    notes.listNotes();
+  }
+});
+
 console.log(yargs.argv);
