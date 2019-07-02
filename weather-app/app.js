@@ -1,11 +1,11 @@
 const geocode = require("./utils/geocode");
 const forecast = require("./utils/forecast");
 
-geocode("vientiane", (error, data) => {
+geocode("vientiane", (error, { latitude, longitude, location }) => {
   if (error) {
     return console.log(error);
   } else {
-    forecast(data.latitude, data.longtitude, (error, forecastData) => {
+    forecast(latitude, longitude, (error, forecastData) => {
       if (error) {
         return console.log(error);
       }
