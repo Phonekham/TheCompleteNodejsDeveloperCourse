@@ -33,14 +33,33 @@ app.get("/help", (req, res) => {
 });
 
 app.get("/weather", (req, res) => {
-  res.send("weather page");
+  if (!req.query.address) {
+    return res.send({
+      error: "You must provide an address"
+    });
+  }
+  res.send({
+    forecast: "It is snowing",
+    location: "Vientiane",
+    address: req.query.address
+  });
 });
 
-app.get("");
+app.get("/products", (req, res) => {
+  if (!req.query.search) {
+    return res.send({
+      error: "You must provide a search term"
+    });
+  }
+  console.log(req.query.search);
+  res.send({
+    products: []
+  });
+});
 
 app.get("*", (req, res) => {
-  res.render("404",{
-      errorMessage:"Error Page not found"
+  res.render("404", {
+    errorMessage: "Error Page not found"
   });
 });
 
